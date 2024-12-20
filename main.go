@@ -57,6 +57,7 @@ func main() {
 	start := time.Now()
 	end := start.Add(duration)
 
+	fmt.Printf("Starting stress test at %s\n", start.Format("2006-01-02 15:04:05"))
 	// 并发执行
 	for i := 0; i < config.Concurrency; i++ {
 		wg.Add(1)
