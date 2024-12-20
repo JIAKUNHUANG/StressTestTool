@@ -1,2 +1,42 @@
-# StressTestTool
-This is a Golang-based HTTP load testing tool. It uses Golang's goroutines to achieve concurrent requests, allowing efficient load testing of the target URL.
+# 基于Golang实现的HTTP压测工具
+
+## 简介
+这是一个基于Golang实现的HTTP压力测试工具。通过使用Golang的协程（goroutine）来实现并发请求，从而达到对目标URL进行高效的压力测试。
+
+## 原理
+单线程请求无法满足高并发压测的需求，因此本工具利用Golang的协程来实现并发请求。每个协程在指定的时间内不断发送HTTP请求，并记录成功的请求数，最终计算出每秒请求数（QPS）。
+
+## 参数
+### 入参
+配置文件 `config.yml` 中包含以下参数：
+- `url`：目标URL
+- `concurrency`：并发数
+- `duration`：测试时长（例如：`30s`，`1m`）
+- `data`：请求体（POST请求的数据）
+- `cookie`：请求头中的Cookie
+
+### 出参
+- `Total requests`：总请求数
+- `Total Time`：总时长
+- `QPS`：每秒请求数（Queries Per Second）
+
+## 使用方法
+### 安装依赖：
+- 确保你已经安装了Golang，并且安装了必要的依赖包：
+``go get gopkg.in/yaml.v2``
+
+- 编写配置文件：
+    - 根据你的测试需求，编写 config.yml 文件，示例如上。
+
+- 运行程序：
+    - 在项目目录下运行以下命令：
+``go run main.go``
+
+- 查看结果：
+    - 程序运行结束后，会输出总请求数、总时长和QPS。
+
+
+## 注意事项
+- 确保目标URL可以处理高并发请求，以免对目标服务器造成过大压力。
+- 根据实际需求调整并发数和测试时长，以获得更准确的测试结果。
+- 在生产环境中使用时，请谨慎操作，避免对生产系统造成影响。
