@@ -1,0 +1,5 @@
+url: "http://example.com/api"
+concurrency: 1000
+duration: "10s"
+data: '{"key": "value"}'
+cookie: "sessionid=abc123"
